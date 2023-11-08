@@ -4,48 +4,85 @@
 
 ```
 {
-	"callers" {
-		"Periodic": {"workflows": ["Workflow1", "Workflow2"]}
-		"PostMethod": {"workflows": ["Workflow3", "Workflow4"]}
-	},
-	"workflows" {
-		"Workflow1": {
-			"child_workflows": ["ChildWorkflow1", "ChildWorkflow2"]
-			"activities": ["Activity1", "Activity2"]
-			"comment": "comment..."
-		}
-		"Workflow2": {
-			"child_workflows": []
-			"activities": ["Activity2", "Activity3"]
-			"comment": "comment..."
-		}
-		"Workflow3": {
-			"child_workflows": []
-			"activities": ["Activity3", "Activity4"]
-			"comment": "comment..."
-		}
-		"Workflow4": {
-			"child_workflows": []
-			"activities": ["Activity4"]
-			"comment": "comment..."
-		}
-		"ChildWorkflow1": {
-			"child_workflows": []
-			"activities": ["Activity1"]
-			"comment": "comment..."
-		}
-		"ChildWorkflow2": {
-			"child_workflows": []
-			"activities": ["Activity2"]
-			"comment": "comment..."
-		}
-	}
-	"activities" {
-		"Activity1": {"comment": "comment..."}
-		"Activity2": {"comment": "comment..."}
-		"Activity3": {"comment": "comment..."}
-		"Activity4": {"comment": "comment..."}
-	}
+  "callers": {
+    "Periodic": {
+        "workflows": ["Workflow1", "Workflow2"],
+        "docstring": "comment...",
+        "path": "project.directory.file.py"
+    },
+    "PostMethod": {
+        "workflows": ["Workflow3", "Workflow4"],
+        "docstring": "comment...",
+        "path": "project.directory.file.py"
+    }
+  },
+  "workflows": {
+    "Workflow1": {
+      "sequence": [
+        "ChildWorkflow1",
+        "Activity1", 
+        "ChildWorkflow2", 
+        "Activity2"
+      ],
+      "docstring": "comment...",
+      "path": "project.directory.file.py"
+    },
+    "Workflow2": {
+      "sequence": [
+        "Activity2", 
+        "Activity3"
+      ],
+      "docstring": "comment...",
+      "path": "project.directory.file.py"
+    },
+    "Workflow3": {
+      "sequence": [
+        "Activity3", 
+        "Activity4"
+            ],
+      "docstring": "comment...",
+      "path": "project.directory.file.py"
+    },
+    "Workflow4": {
+      "sequence": [
+        "Activity4"
+      ],
+      "docstring": "comment...",
+      "path": "project.directory.file.py"
+    },
+    "ChildWorkflow1": {
+      "sequence": [
+        "Activity1"
+      ],
+      "docstring": "comment...",
+      "path": "project.directory.file.py"
+    },
+    "ChildWorkflow2": {
+      "sequence": [
+        "Activity2"
+      ],
+      "docstring": "comment...",
+      "path": "project.directory.file.py"
+    }
+  },
+  "activities": {
+    "Activity1": {
+        "docstring": "comment...",
+        "path": "project.directory.file.py"
+    },
+    "Activity2": {
+        "docstring": "comment...",
+        "path": "project.directory.file.py"
+    },
+    "Activity3": {
+        "docstring": "comment...",
+        "path": "project.directory.file.py"
+    },
+    "Activity4": {
+        "docstring": "comment...",
+        "path": "project.directory.file.py"
+    }
+  }
 }
 ```
 
@@ -138,4 +175,9 @@ def call_worklow2():
         ...
     )
 
+```
+
+### How to run
+```
+python main.py generate-json <path>
 ```

@@ -1,20 +1,33 @@
 from dependency_injector.containers import DeclarativeContainer
-from dependency_injector.providers import Configuration, Factory, Singleton
+from dependency_injector.providers import Factory, Singleton
 
-from src.reader.model.ast_map import AstMap
-from src.reader.model.node_map import NodeMap
-from src.reader.temporal.ast_mapper import AstMapper
-from src.reader.temporal.node_builder import NodeBuilder
-from src.reader.temporal.parser import TemporalParser
+from src.generator.consts import DecoratorTargets
+from src.generator.model.response import Response
+from src.generator.parser import Parser
+from src.generator.processor.doc_workflow_caller_processor import DocWorkflowCallerProcessor
+from src.generator.processor.doc_workflow_schedule_processor import DocWorkflowScheduleProcessor
+from src.generator.processor.doc_workflow_sequence_processor import DocWorkflowSequenceProcessor
+from src.generator.processor.temporal_activity_processor import TemporalActivityProcessor
+from src.generator.processor.temporal_workflow_processor import TemporalWorkflowProcessor
 
 
 class Container(DeclarativeContainer):
-    ast_map = Singleton(AstMap)
-    ast_mapper = Singleton(AstMapper, ast_map=ast_map)
+    # Processors
+    doc_workflow_caller_processor = Singleton(DocWorkflowCallerProcessor)
+    doc_workflow_schedule_processor = Singleton(DocWorkflowScheduleProcessor)
+    doc_workflow_sequence_processor = Singleton(DocWorkflowSequenceProcessor)
+    temporal_activity_processor = Singleton(TemporalActivityProcessor)
+    temporal_workflow_processor = Singleton(TemporalWorkflowProcessor)
 
-    node_map = Singleton(NodeMap)
-    node_builder = Singleton(NodeBuilder, node_map=node_map)
+    # Response data
+    response = Singleton(Response)
 
-    temporal_parser = Factory(
-        TemporalParser, ast_mapper=ast_mapper, node_builder=node_builder
+    parser = Factory(
+        Parser,
+        doc_workflow_caller_processor=doc_workflow_caller_processor,
+        doc_workflow_schedule_processor=doc_workflow_schedule_processor,
+        doc_workflow_sequence_processor=doc_workflow_sequence_processor,
+        temporal_activity_processor=temporal_activity_processor,
+        temporal_workflow_processor=temporal_workflow_processor,
+        response=response,
     )

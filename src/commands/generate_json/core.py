@@ -1,11 +1,13 @@
 import os
+from typing import AnyStr
 
+from src.base_types.cls.parser import Parser
 from src.commands.command import Command
 
 
 class GenerateJSON(Command):
-    # def __init__(self):
-    #     pass
+    def __init__(self, parser: Parser):
+        self.__parser = parser
 
     """
     Class for generating diagram
@@ -18,9 +20,9 @@ class GenerateJSON(Command):
 
         with open(file_path) as file:
             try:
-                df = file.read()
-                # TODO: Parse here
-                # self.__parser.create_ast_mapping(df, file_path)
+                df: AnyStr = file.read()
+                # Parse here
+                self.__parser.parse(df, file_path)
             except Exception:
                 print(f"Unable to parse: {file_path}. Skipping...")
 
@@ -48,7 +50,8 @@ class GenerateJSON(Command):
             elif os.path.isfile(path):
                 self.__read_file(path)
 
-            # Creates relationship ties for all saved nodes
-            # self.__parser.build_tree()
+        # Creates relationship ties for all saved nodes
+        resp = self.__parser.get_json()
+        print(resp)  # TODO: Remove once finalized
 
         print("Generate JSON done")
