@@ -41,12 +41,15 @@ class Parser(Parser):
                 for decorator in node.decorator_list:
                     complete_decorator_name: str = ""
 
-                    if isinstance(decorator, ast.Name):
-                        complete_decorator_name = decorator.id
-                    elif isinstance(decorator, ast.Call):
-                        complete_decorator_name = decorator.func.id
-                    elif isinstance(decorator, ast.Attribute):
-                        complete_decorator_name = f"{decorator.value.id}.{decorator.attr}"
+                    try:
+                        if isinstance(decorator, ast.Name):
+                            complete_decorator_name = decorator.id
+                        elif isinstance(decorator, ast.Call):
+                            complete_decorator_name = decorator.func.id
+                        elif isinstance(decorator, ast.Attribute):
+                            complete_decorator_name = f"{decorator.value.id}.{decorator.attr}"
+                    except Exception:
+                        continue
 
                     if complete_decorator_name != "" and (complete_decorator_name in DECORATOR_TARGET_SET):
                         if complete_decorator_name in self.__decorator_target_processor_mapper:
