@@ -12,7 +12,7 @@ class TemporalWorkflowProcessor(BaseProcessor):
         # If workflow is already registered via doc_workflow_name, do not replace
         if node.name not in response.workflows:
             response.workflows[node.name] = Workflow(
-                sequence=[],
+                data=[],
                 docstring=ast.get_docstring(node),
                 path=path
             )

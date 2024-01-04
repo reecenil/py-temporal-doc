@@ -4,6 +4,6 @@ from pydantic import BaseModel
 
 
 class WorkflowCaller(BaseModel):
-    workflows: List[str]
+    data: List[str]
     docstring: Optional[str]
     path: str

@@ -12,7 +12,7 @@ class DocWorkflowSequenceProcessor(BaseProcessor):
         sequence_list: List[str] = [arg.id for arg in decorator.args]
 
         response.workflows[node.name] = Workflow(
-            sequence=sequence_list,
+            data=sequence_list,
             docstring=ast.get_docstring(node),
             path=path
         )

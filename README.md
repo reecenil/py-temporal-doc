@@ -6,7 +6,7 @@
 {
   "callers": {
     "Periodic": {
-        "workflows": ["Workflow1", "Workflow2"],
+        "data": ["Workflow1", "Workflow2"],
         "docstring": "comment...",
         "path": "project.directory.file.py"
     },
@@ -18,7 +18,7 @@
   },
   "workflows": {
     "Workflow1": {
-      "sequence": [
+      "data": [
         "ChildWorkflow1",
         "Activity1", 
         "ChildWorkflow2", 

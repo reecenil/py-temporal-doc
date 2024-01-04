@@ -12,7 +12,7 @@ class DocWorkflowCallerProcessor(BaseProcessor):
         workflow_list: List[str] = [arg.id for arg in decorator.args]
 
         response.callers[node.name] = WorkflowCaller(
-            workflows=workflow_list,
+            data=workflow_list,
             docstring=ast.get_docstring(node),
             path=path,
         )
