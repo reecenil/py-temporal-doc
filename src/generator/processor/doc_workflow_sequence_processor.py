@@ -9,7 +9,7 @@ from src.generator.processor.base_processor import BaseProcessor
 
 class DocWorkflowSequenceProcessor(BaseProcessor):
     def build(self, response: Response, node: ClassDef | AsyncFunctionDef | FunctionDef, decorator: expr, path: str) -> None:
-        sequence_list: List[str] = [arg.id for arg in decorator.args]
+        sequence_list: List[str] = [arg.id for arg in decorator.args] if decorator.args else []
 
         response.workflows[node.name] = Workflow(
             data=sequence_list,
