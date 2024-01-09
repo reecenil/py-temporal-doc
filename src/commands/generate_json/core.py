@@ -3,6 +3,7 @@ from typing import AnyStr
 
 from src.base_types.cls.parser import Parser
 from src.commands.command import Command
+from src.commands.consts import JSON_FILE_NAME
 
 
 class GenerateJSON(Command):
@@ -15,7 +16,7 @@ class GenerateJSON(Command):
 
     def __read_file(self, file_path: str):
         if not file_path.lower().endswith(".py"):
-            print(f"{file_path} is not a python file. Skipping...")
+            # print(f"{file_path} is not a python file. Skipping...")
             return
 
         with open(file_path) as file:
@@ -24,7 +25,8 @@ class GenerateJSON(Command):
                 # Parse here
                 self.__parser.parse(df, file_path)
             except Exception:
-                print(f"Unable to parse: {file_path}. Skipping...")
+                # print(f"Unable to parse: {file_path}. Skipping...")
+                pass
 
     def __read_directory(self, path: str):
         for subdir, dirs, files in os.walk(path):
@@ -42,16 +44,21 @@ class GenerateJSON(Command):
             None
         """
 
-        if "path" in kwargs:
-            path: str = kwargs["path"]
+        if "source" in kwargs and "destination" in kwargs:
+            source: str = kwargs["source"]
+            destination: str = kwargs["destination"]
 
-            if os.path.isdir(path):
-                self.__read_directory(path)
-            elif os.path.isfile(path):
-                self.__read_file(path)
+            if os.path.isdir(source):
+                self.__read_directory(source)
+            elif os.path.isfile(source):
+                self.__read_file(source)
 
         # Creates relationship ties for all saved nodes
-        resp = self.__parser.get_json()
-        print(resp)  # TODO: Remove once finalized
+        resp: str = self.__parser.get_json()
+        # print(resp)  # TODO: Remove once finalized
+
+        # If the file doesn't exist, it will be created. If it exists, its content will be overwritten.
+        with open(f"{destination}/{JSON_FILE_NAME}", 'w') as file:
+            file.write(resp)
 
         print("Generate JSON done")

@@ -15,10 +15,11 @@ def generate_json() -> None:
 
 
 @generate_json.command(name="generate-json")
-@click.argument("path", type=Path(exists=True))
+@click.argument("source", type=Path(exists=True))
+@click.argument("destination", default=".", type=Path(exists=True))
 @inject
 def generate_json_execute(
-    path: Path, cls: GenerateJSON = Provide[Container.generate_json]
+    source: Path, destination: Path, cls: GenerateJSON = Provide[Container.generate_json]
 ) -> None:
     """
     Execution of generate diagram CLI command
@@ -30,7 +31,7 @@ def generate_json_execute(
     Returns:
         None
     """
-    cls.execute(path=path)
+    cls.execute(source=source, destination=destination)
 
 
 command_list: list[MultiCommand] = [generate_json]  # List of valid commands for CLI
