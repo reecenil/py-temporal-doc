@@ -58,7 +58,7 @@ class GenerateJSON(Command):
         # print(resp)  # TODO: Remove once finalized
 
         # If the file doesn't exist, it will be created. If it exists, its content will be overwritten.
-        with open(f"{destination}/{JSON_FILE_NAME}", 'w') as file:
+        with open(f"{destination}/{JSON_FILE_NAME}", "w") as file:
             file.write(resp)
 
         print("Generate JSON done")

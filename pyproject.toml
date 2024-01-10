@@ -1,6 +1,6 @@
 [project]
 name = "py-temporal-doc"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Reecenil Valencia", email="reecenil.h.valencia@gmail.com" },
 ]
@@ -19,7 +19,7 @@ Issues = "https://github.com/reecenil/py-temporal-doc/issues"
 
 [tool.poetry]
 name = "py-temporal-doc"
-version = "0.0.1"
+version = "0.0.2"
 description = "Temporal documentation decorator plugin for python"
 authors = ["Reecenil Valencia <reecenil.h.valencia@gmail.com>"]
 license = "Apache"

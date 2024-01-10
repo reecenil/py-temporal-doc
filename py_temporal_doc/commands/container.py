@@ -13,4 +13,3 @@ class Container(DeclarativeContainer):
     wiring_config = WiringConfiguration(modules=[".command_list"])
 
     generate_json = Factory(GenerateJSON, parser=generator_container.parser)
-
