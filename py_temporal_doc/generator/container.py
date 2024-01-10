@@ -1,14 +1,14 @@
 from dependency_injector.containers import DeclarativeContainer
 from dependency_injector.providers import Factory, Singleton
 
-from src.generator.consts import DecoratorTargets
-from src.generator.model.response import Response
-from src.generator.parser import Parser
-from src.generator.processor.doc_workflow_caller_processor import DocWorkflowCallerProcessor
-from src.generator.processor.doc_workflow_schedule_processor import DocWorkflowScheduleProcessor
-from src.generator.processor.doc_workflow_sequence_processor import DocWorkflowSequenceProcessor
-from src.generator.processor.temporal_activity_processor import TemporalActivityProcessor
-from src.generator.processor.temporal_workflow_processor import TemporalWorkflowProcessor
+from py_temporal_doc.generator.consts import DecoratorTargets
+from py_temporal_doc.generator.model.response import Response
+from py_temporal_doc.generator.parser import Parser
+from py_temporal_doc.generator.processor.doc_workflow_caller_processor import DocWorkflowCallerProcessor
+from py_temporal_doc.generator.processor.doc_workflow_schedule_processor import DocWorkflowScheduleProcessor
+from py_temporal_doc.generator.processor.doc_workflow_sequence_processor import DocWorkflowSequenceProcessor
+from py_temporal_doc.generator.processor.temporal_activity_processor import TemporalActivityProcessor
+from py_temporal_doc.generator.processor.temporal_workflow_processor import TemporalWorkflowProcessor
 
 
 class Container(DeclarativeContainer):

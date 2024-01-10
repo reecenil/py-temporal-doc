@@ -2,10 +2,10 @@ import ast
 import json
 from typing import AnyStr
 
-from src.base_types.cls.parser import Parser
-from src.generator.consts import DECORATOR_TARGET_SET, DecoratorTargets
-from src.generator.model.response import Response
-from src.generator.processor.base_processor import BaseProcessor
+from py_temporal_doc.base_types.cls.parser import Parser
+from py_temporal_doc.generator.consts import DECORATOR_TARGET_SET, DecoratorTargets
+from py_temporal_doc.generator.model.response import Response
+from py_temporal_doc.generator.processor.base_processor import BaseProcessor
 
 
 class Parser(Parser):
@@ -56,5 +56,5 @@ class Parser(Parser):
                             self.__decorator_target_processor_mapper[complete_decorator_name].build(self.__response, node, decorator, path)
 
     def get_json(self) -> str:
-        return self.__response.model_dump_json()
+        return self.__response.json()
 

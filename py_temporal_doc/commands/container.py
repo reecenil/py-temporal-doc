@@ -2,8 +2,8 @@ from dependency_injector.containers import (DeclarativeContainer,
                                             WiringConfiguration)
 from dependency_injector.providers import Factory
 
-from src.commands.generate_json.core import GenerateJSON
-from src.generator import container as GeneratorContainer
+from py_temporal_doc.commands.generate_json.core import GenerateJSON
+from py_temporal_doc.generator import container as GeneratorContainer
 
 generator_container = GeneratorContainer.Container()
 

@@ -1,7 +1,7 @@
 import click
 
-from src.commands import container as CommandContainer
-from src.commands.command_list import command_list
+from py_temporal_doc.commands import container as CommandContainer
+from py_temporal_doc.commands.command_list import command_list
 
 
 def setup_containers():

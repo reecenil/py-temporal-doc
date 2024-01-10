@@ -2,8 +2,8 @@ import click
 from click import MultiCommand, Path
 from dependency_injector.wiring import Provide, inject
 
-from src.commands.container import Container
-from src.commands.generate_json.core import GenerateJSON
+from py_temporal_doc.commands.container import Container
+from py_temporal_doc.commands.generate_json.core import GenerateJSON
 
 
 @click.group()

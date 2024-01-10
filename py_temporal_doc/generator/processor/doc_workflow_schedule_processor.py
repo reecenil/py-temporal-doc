@@ -1,8 +1,8 @@
 from _ast import AST, ClassDef, AsyncFunctionDef, FunctionDef, expr
 from typing import Any
 
-from src.generator.model.response import Response
-from src.generator.processor.base_processor import BaseProcessor
+from py_temporal_doc.generator.model.response import Response
+from py_temporal_doc.generator.processor.base_processor import BaseProcessor
 
 
 class DocWorkflowScheduleProcessor(BaseProcessor):

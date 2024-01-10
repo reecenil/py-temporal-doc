@@ -2,7 +2,7 @@ from _ast import ClassDef, AsyncFunctionDef, FunctionDef, expr
 from abc import ABC, abstractmethod
 from typing import Any
 
-from src.generator.model.response import Response
+from py_temporal_doc.generator.model.response import Response
 
 
 class BaseProcessor(ABC):

@@ -1,9 +1,9 @@
 import os
 from typing import AnyStr
 
-from src.base_types.cls.parser import Parser
-from src.commands.command import Command
-from src.commands.consts import JSON_FILE_NAME
+from py_temporal_doc.base_types.cls.parser import Parser
+from py_temporal_doc.commands.command import Command
+from py_temporal_doc.commands.consts import JSON_FILE_NAME
 
 
 class GenerateJSON(Command):

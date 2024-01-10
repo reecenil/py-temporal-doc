@@ -2,9 +2,9 @@ import ast
 from _ast import AST, ClassDef, AsyncFunctionDef, FunctionDef, expr
 from typing import List
 
-from src.generator.model.response import Response
-from src.generator.model.workflow_caller import WorkflowCaller
-from src.generator.processor.base_processor import BaseProcessor
+from py_temporal_doc.generator.model.response import Response
+from py_temporal_doc.generator.model.workflow_caller import WorkflowCaller
+from py_temporal_doc.generator.processor.base_processor import BaseProcessor
 
 
 class DocWorkflowCallerProcessor(BaseProcessor):
